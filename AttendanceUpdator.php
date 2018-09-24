@@ -16,6 +16,7 @@
 		$result = mysqli_query($conn, $sql);
 		$date = date('y-m-d');
 		$query = "";
+<<<<<<< HEAD
 		while($row = mysqli_fetch_assoc($result)){
 			$selected = $_POST[$row['ID']];
 			$query .= "INSERT INTO memberattendance values('".$row['ID']."','".$date."','".$selected."');";
@@ -29,10 +30,32 @@
 				echo "<script type='text/javascript'>alert('Attendance was already recorded!');window.location.href='security.html';</script>";
 			}
 			else{
+=======
+		while($row = mysqli_fetch_assoc($result))
+		{
+			$selected = $_POST[$row['ID']];
+			$query .= "INSERT INTO memberattendance values('".$row['ID']."','".$date."','".$selected."');";
+		}
+		if ($conn->multi_query($query) === TRUE) 
+		{
+			echo "<script type='text/javascript'>alert('Attendance has been updated!');window.location.href='security.html';</script>";
+		} else {
+			$length = strlen("Duplicate");
+			if (substr($conn->error, 0, $length) === "Duplicate")
+			{
+				echo "<script type='text/javascript'>alert('Attendance was already recorded!');window.location.href='security.html';</script>";
+			}
+			else
+			{
+>>>>>>> 272c83a98e00e9b111ac469beec8e8c69420b606
 				echo "<script type='text/javascript'>alert('".$conn->error."');window.location.href='security.html';</script>";
 			}
 		}
 		mysqli_close($conn);
 		?>
 	</body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 272c83a98e00e9b111ac469beec8e8c69420b606

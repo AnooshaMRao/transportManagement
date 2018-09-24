@@ -2,11 +2,16 @@
 session_start();
 date_default_timezone_set('Asia/Kolkata');
 ?>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 272c83a98e00e9b111ac469beec8e8c69420b606
 <html>
 <head>
 <link rel="stylesheet" href="navButton.css">
 <link rel="stylesheet" href="formStyles.css">
 <body>
+<<<<<<< HEAD
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"/>
 <script>
 	$(document).ready(function(){
@@ -30,6 +35,33 @@ date_default_timezone_set('Asia/Kolkata');
 	});
 		
 </script>
+=======
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"/></script>
+		<script>
+		$(document).ready(function(){
+			$("#route").change(function(){
+				
+				var ww = $( "#route" ).val();
+				
+				if($("#route").val()=="")
+				{
+					$("#stopname").html("")
+				}
+				else{
+				$.ajax({
+					type: "GET",
+					url: "getStopNames.php",
+					data: {'q': ww}
+				}).done(function( msg ) {
+					$("#stopname").html(msg)
+				});
+				}
+			});
+		});
+		
+		</script>
+>>>>>>> 272c83a98e00e9b111ac469beec8e8c69420b606
 </head>
 <body>  
 
