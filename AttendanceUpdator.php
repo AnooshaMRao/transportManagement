@@ -16,22 +16,19 @@
 		$result = mysqli_query($conn, $sql);
 		$date = date('y-m-d');
 		$query = "";
-		while($row = mysqli_fetch_assoc($result))
-		{
+		while($row = mysqli_fetch_assoc($result)){
 			$selected = $_POST[$row['ID']];
 			$query .= "INSERT INTO memberattendance values('".$row['ID']."','".$date."','".$selected."');";
 		}
-		if ($conn->multi_query($query) === TRUE) 
-		{
+		if ($conn->multi_query($query) === TRUE) {
 			echo "<script type='text/javascript'>alert('Attendance has been updated!');window.location.href='security.html';</script>";
-		} else {
+		}
+		else {
 			$length = strlen("Duplicate");
-			if (substr($conn->error, 0, $length) === "Duplicate")
-			{
+			if (substr($conn->error, 0, $length) === "Duplicate"){
 				echo "<script type='text/javascript'>alert('Attendance was already recorded!');window.location.href='security.html';</script>";
 			}
-			else
-			{
+			else{
 				echo "<script type='text/javascript'>alert('".$conn->error."');window.location.href='security.html';</script>";
 			}
 		}
